@@ -13,7 +13,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 define('BRUNO_MAGIC_TOOLS_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 define('BRUNO_MAGIC_TOOLS_PLUGIN_DIR', plugin_dir_path( __FILE__ ));
 
-/*
+/* for reference
+
 add_filter('excerpt_length', 'bruno_magic_tools_excerpt_length', 999);
 function bruno_magic_tools_excerpt_length($number) {// default: 55
 	return 180;
@@ -48,7 +49,6 @@ function bruno_magic_tools_trim_excerpt($text, $raw_excerpt) {
 	}
 	return $text;
 }
-
 
 
 
@@ -369,7 +369,7 @@ function bruno_magic_tools_rgfpriority($priority) {
 }/** Remove Google Fonts References(plugin): remove_google_fonts_priority filter END */
 
 
-/** Prism syntax highlighter (wpjam version) */if (false) {
+/** all: Prism syntax highlighter (wpjam version) */if (false) {
 /*
 Usage: <pre><code class="language-css">Your CSS Codes</code></pre> or <pre><code class="language-markup">Your HTML Codes</code></pre>
 Support Types: language-markup, language-css, language-javascript, language-php
@@ -586,6 +586,6 @@ if (Prism.languages.markup) {
 </script>
 <?
 }
-}/** Prism syntax highlighter (wpjam version) END */
+}/** all: Prism syntax highlighter (wpjam version) END */
 
 
