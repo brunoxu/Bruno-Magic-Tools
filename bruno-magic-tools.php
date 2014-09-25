@@ -60,7 +60,7 @@ function bruno_magic_tools_content_more($more_link_element, $more_link_text) {
 	return '';
 }
 
-没有get_the_content filter
+there's no get_the_content filter
 
 the_content filter
 
@@ -228,7 +228,7 @@ if (!is_admin()) {
 
 /** all: debug in out buffering */
 function ob_debug($var, $die=TRUE) {
-	$handle = fopen(plugin_dir_path(__FILE__).date('Y-m-d').'.log', 'a+');
+	$handle = fopen(BRUNO_MAGIC_TOOLS_PLUGIN_DIR.date('Y-m-d').'.log', 'a+');
 	fwrite($handle, "\n\n\n--------------------\n");
 	fwrite($handle, json_encode($var));
 	fclose($handle);
@@ -249,7 +249,7 @@ function ob_error_handler($str) {
 /** all: debug in out buffering END */
 
 
-/** all: set baidu share datas:bdText,bdDesc,bdUrl,bdPic */
+/** all: add baidu share js, with datas setting:bdText,bdDesc,bdUrl,bdPic */
 $bd_share_js = '
 <div class="bdsharebuttonbox">
 <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
@@ -286,9 +286,9 @@ function bruno_magic_tools_baidu_share_datas($content) {
 			$cont = strip_tags(strip_shortcodes($post->post_content));
 		}
 		$cont = trim($cont);
-		//$bdDesc = mb_strimwidth($cont, 0, 100, '...', 'utf8');//前面做了Save Yupoo Imgs To Local插件，可以保存又拍图片到本地，页面显示的时候替换成本地地址，文章...
-		//$bdDesc = mb_substr($cont, 0, 100, 'utf8');//前面做了Save Yupoo Imgs To Local插件，可以保存又拍图片到本地，页面显示的时候替换成本地地址，文章的实际内容没变，还是引用的yupoo图片，换种说法是数据库中的数据没变，如果需要
-		//$bdDesc = mb_substr($cont, 0, 120, 'utf8').'...';
+		//$bdDesc = mb_strimwidth($cont, 0, 100, '...', 'utf8');//result: "前面做了Save Yupoo Imgs To Local插件，可以保存又拍图片到本地，页面显示的时候替换成本地地址，文章..."
+		//$bdDesc = mb_substr($cont, 0, 100, 'utf8');//result: "前面做了Save Yupoo Imgs To Local插件，可以保存又拍图片到本地，页面显示的时候替换成本地地址，文章的实际内容没变，还是引用的yupoo图片，换种说法是数据库中的数据没变，如果需要"
+		//$bdDesc = mb_substr($cont, 0, 120, 'utf8').'...';//it will be too short when article written in English
 		$bdDesc = mb_strimwidth($cont, 0, 200, '...', 'utf8');
 
 		$bdUrl = get_permalink($post);
@@ -329,7 +329,7 @@ if (window._bd_share_config) {
 </script>
 ';
 }
-/** all: set baidu share datas:bdText,bdDesc,bdUrl,bdPic END */
+/** all: add baidu share js, with datas setting:bdText,bdDesc,bdUrl,bdPic END */
 
 
 /** all: fix images' height as width been set as 100%, for lazy load displaying */
@@ -371,8 +371,8 @@ function bruno_magic_tools_rgfpriority($priority) {
 
 /** all: Prism syntax highlighter (wpjam version) */if (false) {
 /*
-Usage: <pre><code class="language-css">Your CSS Codes</code></pre> or <pre><code class="language-markup">Your HTML Codes</code></pre>
-Support Types: language-markup, language-css, language-javascript, language-php
+Usage: <pre><code class="language-css">Your CSS Codes</code></pre> or <pre><code class="language-markup">Your HTML Codes</code></pre> etc.
+Support languages: language-markup, language-css, language-javascript, language-php
 */
 add_filter('wp_footer', 'bruno_magic_tools_prism');
 function bruno_magic_tools_prism() {
@@ -587,5 +587,4 @@ if (Prism.languages.markup) {
 <?
 }
 }/** all: Prism syntax highlighter (wpjam version) END */
-
 
