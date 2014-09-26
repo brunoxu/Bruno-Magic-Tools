@@ -332,7 +332,7 @@ if (window._bd_share_config) {
 /** all: add baidu share js, with datas setting:bdText,bdDesc,bdUrl,bdPic END */
 
 
-/** all: fix images' height as width been set as 100%, for lazy load displaying */
+/** all: fix images' height as width been set as 100%, for lazy load displaying */if (false) {
 add_action('wp_footer','bruno_magic_tools_fix_images_height',0);
 function bruno_magic_tools_fix_images_height() {
 ?>
@@ -357,7 +357,7 @@ jQuery(function($) {
 </script>
 <?php
 }
-/** all: fix images' height as width been set as 100%, for lazy load displaying END */
+}/** all: fix images' height as width been set as 100%, for lazy load displaying END */
 
 
 /** Remove Google Fonts References(plugin): remove_google_fonts_priority filter */if (false) {
