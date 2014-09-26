@@ -369,7 +369,7 @@ function bruno_magic_tools_rgfpriority($priority) {
 }/** Remove Google Fonts References(plugin): remove_google_fonts_priority filter END */
 
 
-/** all: Prism syntax highlighter (wpjam version) */if (false) {
+/** all: Prism syntax highlighter (wpjam version) */if (true) {
 /*
 Usage: <pre><code class="language-css">Your CSS Codes</code></pre> or <pre><code class="language-markup">Your HTML Codes</code></pre> etc.
 Support languages: language-markup, language-css, language-javascript, language-php
@@ -387,6 +387,18 @@ code[class*="language-"],pre[class*="language-"]{color:black;text-shadow:0 1px w
 0 1em 3em}.line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24, 20%, 50%,.08);background:-moz-linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));background:-webkit-linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));background:-o-linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));background:linear-gradient(left, hsla(24, 20%, 50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}.line-highlight:before,.line-highlight[data-end]:after{content:attr(data-start);position:absolute;top: .4em;left: .6em;min-width:1em;padding:0
 .5em;background-color:hsla(24, 20%, 50%,.4);color:hsl(24, 20%, 95%);font:bold 65%/1.5 sans-serif;text-align:center;vertical-align: .3em;border-radius:999px;text-shadow:none;box-shadow:0 1px white}.line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom: .4em}.token.tab:not(:empty):before,.token.cr:before,.token.lf:before{color:hsl(24,20%,85%)}.token.tab:not(:empty):before{content:'▸'}.token.cr:before{content:'␍'}.token.lf:before{content:'␊'}.token
 a{color:inherit}.token.function,.token.constant{color:#07a}.token.variable{color:#e90}.token.deliminator{font-weight:bold}
+/* for theme travelify */
+.entry-content pre{
+padding: 10px;
+}
+:not(pre)>code[class*="language-"], pre[class*="language-"] {
+background: #EFEFFF;
+}
+.entry-content code{
+background: none;
+/*word-wrap: normal;*/
+}
+/* for theme travelify END */
 </style>
 <script>
 (function() {
