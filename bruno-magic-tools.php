@@ -600,3 +600,85 @@ if (Prism.languages.markup) {
 }
 }/** all: Prism syntax highlighter (wpjam version) END */
 
+
+/** all: 添加bing翻译按钮 */if (false) {
+if (!is_admin()) {
+	add_action('wp_footer', 'bruno_magic_tools_add_bing_translate_button');
+	function bruno_magic_tools_add_bing_translate_button() {
+?>
+<style>
+#MicrosoftTranslatorWidget{
+position:absolute;
+top:50px;
+left:10px;
+}
+</style>
+<div id='MicrosoftTranslatorWidget' class='Dark' style='color:white;background-color:#555555'></div><script type='text/javascript'>setTimeout(function(){{var s=document.createElement('script');s.type='text/javascript';s.charset='UTF-8';s.src=((location && location.href && location.href.indexOf('https') == 0)?'https://ssl.microsofttranslator.com':'http://www.microsofttranslator.com')+'/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**&ctf=True&ui=true&settings=Manual&from=en';var p=document.getElementsByTagName('head')[0]||document.documentElement;p.insertBefore(s,p.firstChild); }},0);</script>
+<?php
+	}
+}
+}/** all: 添加bing翻译按钮 END */
+
+
+/** all: 添加bing翻译按钮(自定义样式) */if (true) {
+/* http://www.bing.com/widget/translator */
+if (!is_admin()) {
+	add_action('wp_enqueue_scripts', 'bruno_magic_tools_script_bing');
+	function bruno_magic_tools_script_bing() {
+		wp_enqueue_script('jquery');
+	}
+	add_action('wp_footer', 'bruno_magic_tools_add_bing_translate_button');
+	function bruno_magic_tools_add_bing_translate_button() {
+?>
+<style>
+#MicrosoftTranslatorWidget{
+display:none !important;
+}
+#WidgetFloaterPanels{
+display:none !important;
+}
+#MicrosoftTranslatorWidget_customtext{
+position:fixed;
+top:50px;
+left:10px;
+}
+#MicrosoftTranslatorWidget_customtext span{
+cursor:pointer;
+padding:5px 10px;
+}
+</style>
+<script>
+var from_lang_bmt = 'en';
+//var from_lang_bmt = 'zh-CHS';
+jQuery(function($){
+	var lang_default=from_lang_bmt;
+	var lang_now=from_lang_bmt;
+	var translate = function(lang) {
+		if (typeof LanguageMenu == 'undefined') {
+			return;
+		}
+		if (lang!=lang_now) {
+			LanguageMenu.onclick(lang);
+			lang_now = lang;
+		}
+	}
+	setTimeout(function(){
+		if ($('#LauncherTranslatePhrase').length>0) {
+			$('#LauncherTranslatePhrase').click();
+			$('#MicrosoftTranslatorWidget_customtext span').click(function(){
+				translate($(this).attr('lang'));
+			});
+		}
+	}, 2000);
+});
+</script>
+<div id='MicrosoftTranslatorWidget_customtext' translate="no">
+<span lang='zh-CHS'>中文</span>
+<span lang='en'>English</span>
+</div>
+<div id='MicrosoftTranslatorWidget' class='Dark' style='color:white;background-color:#555555'></div><script type='text/javascript'>setTimeout(function(){{var s=document.createElement('script');s.type='text/javascript';s.charset='UTF-8';s.src=((location && location.href && location.href.indexOf('https') == 0)?'https://ssl.microsofttranslator.com':'http://www.microsofttranslator.com')+'/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**&ctf=True&ui=true&settings=Manual&from='+from_lang_bmt;var p=document.getElementsByTagName('head')[0]||document.documentElement;p.insertBefore(s,p.firstChild); }},0);</script>
+<?php
+	}
+}
+}/** all: 添加bing翻译按钮(自定义样式) END */
+
