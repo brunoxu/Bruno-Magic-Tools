@@ -620,7 +620,7 @@ left:10px;
 }/** all: 添加bing翻译按钮 END */
 
 
-/** all: 添加bing翻译按钮(自定义样式) */if (true) {
+/** all: 添加bing翻译按钮(自定义样式) */if (false) {
 /* http://www.bing.com/widget/translator */
 if (!is_admin()) {
 	add_action('wp_enqueue_scripts', 'bruno_magic_tools_script_bing');
@@ -681,4 +681,12 @@ jQuery(function($){
 	}
 }
 }/** all: 添加bing翻译按钮(自定义样式) END */
+
+
+/** Remove Google Fonts References(plugin): 使用geekzu.org资源来显示所有gravatar头像(use remove_google_fonts_content_filter_after filter) */if (false) {
+add_filter('remove_google_fonts_content_filter_after', 'bruno_magic_tools_rgfcfa');
+function bruno_magic_tools_rgfcfa($content) {
+	return preg_replace("/(\d+|www|secure|cn).gravatar.com\/avatar/i", 'sdn.geekzu.org/avatar', $content);
+}
+}/** Remove Google Fonts References(plugin): 使用geekzu.org资源来显示所有gravatar头像(use remove_google_fonts_content_filter_after filter) END */
 
